@@ -32,6 +32,7 @@ fire ball (green)
 * Implement commentary with calls to an LLM such as LLama
 
 # Time Details and Changelist
+[Time displayed as how loong into working on project a milestone was reached. ie. 1 hour 57 minutes in Ball Trail Implementation was successful]
 * 0:02: Fix compiler error
 * 1:00: Mouse input for paddle Implementation
 * 1:57: Ball Trail Implementation
