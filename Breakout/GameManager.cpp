@@ -110,7 +110,9 @@ void GameManager::loseLife()
 void GameManager::render()
 {
     _paddle->render();
+
     _ball->render();
+
     _brickManager->render();
     _powerupManager->render();
     _window->draw(_masterText);

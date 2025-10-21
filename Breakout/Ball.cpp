@@ -8,6 +8,10 @@ Ball::Ball(sf::RenderWindow* window, float velocity, GameManager* gameManager)
     _sprite.setRadius(RADIUS);
     _sprite.setFillColor(sf::Color::Cyan);
     _sprite.setPosition(0, 300);
+
+    _trailSprite.setRadius(RADIUS);
+    _trailSprite.setFillColor(sf::Color::Cyan);
+    _trailSprite.setPosition(0, 300);
 }
 
 Ball::~Ball()
@@ -90,10 +94,26 @@ void Ball::update(float dt)
     {
         _direction.y *= -1; // Bounce vertically
     }
+
+    if (previousBallPositions.size() > 200) { previousBallPositions.pop_back(); }
+    
+    
+    previousBallPositions.push_front(_sprite.getPosition());
+  
 }
 
 void Ball::render()
 {
+    for (int i = 0; i < previousBallPositions.size(); i++)
+    {
+        float radiusPercentage = (static_cast<float>(previousBallPositions.size()) - i) / previousBallPositions.size();
+
+        _trailSprite.setRadius(RADIUS * radiusPercentage);
+        _trailSprite.setFillColor(sf::Color::White);
+        _trailSprite.setPosition(previousBallPositions[i]);
+        _window->draw(_trailSprite);
+    }
+
     _window->draw(_sprite);
 }
 
