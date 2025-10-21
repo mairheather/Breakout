@@ -33,7 +33,7 @@ fire ball (green)
 
 # Time Details and Changelist
 [Time displayed as how loong into working on project a milestone was reached. ie. 1 hour 57 minutes in Ball Trail Implementation was successful]
-* 0:02: Fix compiler error
-* 1:00: Mouse input for paddle Implementation
-* 1:57: Ball Trail Implementation
-* 2:50: Small and Big Ball Power Up Implementation
+* 0:10: Read code and fix compiler error
+* 1:10: Mouse input for paddle Implementation
+* 2:15: Ball Trail Implementation
+* 3:15: Small and Big Ball Power Up Implementation
