@@ -32,8 +32,7 @@ fire ball (green)
 * Implement commentary with calls to an LLM such as LLama
 
 # Time Details and Changelist
-<Add information to this section about the time you've taken for this task along with a professional changelist.>
-0:02 Fix compiler error
-1:00 Mouse input for paddle Implementation
-1:57 Ball Trail Implementation
-2:50 Small and Big Ball Power Up Implementation
+* 0:02: Fix compiler error
+* 1:00: Mouse input for paddle Implementation
+* 1:57: Ball Trail Implementation
+* 2:50: Small and Big Ball Power Up Implementation
