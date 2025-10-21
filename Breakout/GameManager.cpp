@@ -13,6 +13,11 @@ GameManager::GameManager(sf::RenderWindow* window)
     _masterText.setPosition(50, 400);
     _masterText.setCharacterSize(48);
     _masterText.setFillColor(sf::Color::Yellow);
+
+
+    sf::Vector2i windowMidpoint = window->getPosition();
+    windowMidpoint += sf::Vector2i(window->getSize().x / 2, window->getSize().y / 2);
+    sf::Mouse::setPosition(windowMidpoint, *window);
 }
 
 void GameManager::initialize()
@@ -23,6 +28,7 @@ void GameManager::initialize()
     _ball = new Ball(_window, 400.0f, this); 
     _powerupManager = new PowerupManager(_window, _paddle, _ball);
     _ui = new UI(_window, _lives, this);
+    previousMousePosition = sf::Vector2f(sf::Mouse::getPosition());
 
     // Create bricks
     _brickManager->createBricks(5, 10, 80.0f, 30.0f, 5.0f);
@@ -80,6 +86,12 @@ void GameManager::update(float dt)
     // move paddle
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _paddle->moveRight(dt);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _paddle->moveLeft(dt);
+    
+    if (sf::Vector2f(sf::Mouse::getPosition()) != previousMousePosition)
+    {
+        _paddle->moveMouse();
+        previousMousePosition = sf::Vector2f(sf::Mouse::getPosition());
+    }
 
     // update everything 
     _paddle->update(dt);

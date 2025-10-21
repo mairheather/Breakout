@@ -35,6 +35,7 @@ private:
     int _lives;
     bool _levelComplete;
     std::pair<POWERUPS, float> _powerupInEffect;
+    sf::Vector2f previousMousePosition;
 
     sf::Font _font;
     sf::Text _masterText;
