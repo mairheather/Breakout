@@ -97,6 +97,7 @@ void GameManager::update(float dt)
     _paddle->update(dt);
     _ball->update(dt);
     _powerupManager->update(dt);
+    _brickManager->update(dt);
 }
 
 void GameManager::loseLife()

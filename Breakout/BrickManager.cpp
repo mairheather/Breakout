@@ -30,7 +30,14 @@ void BrickManager::render()
     }
 }
 
-int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction)
+void BrickManager::update(float dt)
+{
+    for (auto& brick : _bricks) {
+        brick.incrementTimer(dt);
+    }
+}
+
+int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction, bool isFireBall)
 {
     int collisionResponse = 0;  // set to 1 for horizontal collision and 2 for vertical.
     for (auto& brick : _bricks) {
@@ -46,10 +53,21 @@ int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction)
             // unless it's horizontal (collision from side)
             collisionResponse = 1;
 
+        if (isFireBall)
+            brick.decreaseHealth(brick.getHealth());
+
+        brick.decreaseHealth(1);
+        brick.resetTimer();
+
         // Mark the brick as destroyed (for simplicity, let's just remove it from rendering)
         // In a complete implementation, you would set an _isDestroyed flag or remove it from the vector
-        brick = _bricks.back();
-        _bricks.pop_back();
+
+        if (brick.getHealth() <= 0)
+        {
+            brick = _bricks.back();
+            _bricks.pop_back();
+        }
+
         break;
     }
     if (_bricks.size() == 0)

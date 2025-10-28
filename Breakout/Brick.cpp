@@ -19,3 +19,26 @@ sf::FloatRect Brick::getBounds() const
 {
     return _shape.getGlobalBounds();
 }
+
+int Brick::getHealth()
+{
+    return health;
+}
+
+void Brick::decreaseHealth(int damage)
+{
+    if (hitTimer >= collisionCooldown)
+    {
+        health -= damage;
+    }
+}
+
+void Brick::incrementTimer(float dt)
+{
+    hitTimer += dt;
+}
+
+void Brick::resetTimer()
+{
+    hitTimer = 0;
+}

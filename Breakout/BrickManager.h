@@ -10,7 +10,9 @@ public:
     BrickManager(sf::RenderWindow* window, GameManager* gameManager);
     void createBricks(int rows, int cols, float brickWidth, float brickHeight, float spacing);
     void render();
-    int checkCollision(sf::CircleShape& ball, sf::Vector2f& direction);
+    void update(float dt);
+
+    int checkCollision(sf::CircleShape& ball, sf::Vector2f& direction, bool isFireBall);
 
 private:
     std::vector<Brick> _bricks;
